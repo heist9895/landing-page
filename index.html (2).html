@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Survey Landing Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 600px;
+      margin: 50px auto;
+      padding: 20px;
+      background-color: #fff;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+    h1 {
+      color: #333;
+      font-size: 28px;
+      margin-bottom: 20px;
+    }
+    p {
+      color: #777;
+      margin-bottom: 30px;
+    }
+    .button {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #4caf50;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 4px;
+      transition: background-color 0.3s;
+      cursor: pointer;
+      font-size: 16px;
+      border: none;
+    }
+    .button:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Take our survey and earn up to $200!</h1>
+    <p>Complete the survey below and you have a chance to earn a payment of up to $200 for your valuable feedback.</p>
+    <button class="button" onclick="startSurvey()">Start Survey</button>
+  </div>
+
+  <script>
+    function startSurvey() {
+      // Check visitor's geolocation
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function(position) {
+          var latitude = position.coords.latitude;
+          var longitude = position.coords.longitude;
+
+          // Check if the visitor is in Canada (latitude and longitude values may vary based on your specific criteria)
+          if (latitude > 41 && latitude < 84 && longitude > -141 && longitude < -52) {
+            // Redirect the user to the survey page or show a popup/modal with the survey
+            // Implementation details depend on your specific requirements and survey platform
+            alert('Redirecting to the survey page...');
+            window.location.href = 'https://tundrafile.com/show.php?l=0&u=1387353&id=54463&tracking_id=';
+          } else {
+            alert('This survey is only available to visitors from Canada.');
+          }
+        });
+      } else {
+        alert('Geolocation is not supported by your browser.');
+      }
+    }
+  </script>
+</body>
+</html>
